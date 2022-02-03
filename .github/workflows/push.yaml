@@ -25,7 +25,7 @@ jobs:
         working-directory: ./guestbook
 
       - name: Push Docker image
-        run: docker push sebkhedim/guestbook:$GITHUB_SHA
+        run: docker push cbourgeois1/guestbook:$GITHUB_SHA
 
       - name: Google auth
         uses: 'google-github-actions/auth@v0'
