@@ -15,7 +15,7 @@ spec:
         app: guestbook
     spec:
       containers:
-      - name: guestbook
+      - name: guestbook-Chris
         image: cbourgeois1/guestbook
         resources:
           requests:
