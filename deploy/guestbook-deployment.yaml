@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guestbook-Chris
+  name: guestbook-chris
   labels:
     app: guestbook
 spec:
@@ -15,7 +15,7 @@ spec:
         app: guestbook
     spec:
       containers:
-      - name: guestbook-Chris
+      - name: guestbook-chris
         image: cbourgeois1/guestbook
         resources:
           requests:
