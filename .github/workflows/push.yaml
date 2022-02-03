@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASS }}
 
       - name: Build Docker image
-        run: docker build . --file Dockerfile --tag cbourgeois1/guestbook:$GITHUB_SHA
+        run: docker build . --file Dockerfile --tag sebkhedim/guestbook:$GITHUB_SHA
         working-directory: ./guestbook
 
       - name: Push Docker image
@@ -41,5 +41,12 @@ jobs:
       - name: Install kubectl
         uses: azure/setup-kubectl@v2.0
 
-      - name: apply all K8S YAML
+      - name: Deploy the application
+        run: kubectl create deployment guestbook-chris --image=cbourgeois1/guestbook:$GITHUB_SHA
+        continue-on-error: true
+
+      - name: Deploy application
+        run: kubectl set image deployment/guestbook-chris guestbook=cbourgeois1/guestbook:$GITHUB_SHA
+
+      - name: Expose application
         run: kubectl apply -f ./deploy
